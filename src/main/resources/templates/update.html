@@ -11,18 +11,19 @@
     </header>
     
     <article>
-        <form action="/update" method="post">
+        <form action='/update/' method="post">
+            <input type="hidden" th:value="${board.idx}">
             <div>
                 <label>name</label>
-                <input name="name" type="text" th:text="${board.name}">
+                <input name="name" type="text" th:value="${board.name}">
             </div>
             <div>
                 <label>pw</label>
-                <input name="pw" type="text" th:text="${board.pw}">
+                <input name="pw" type="text" th:value="${board.pw}">
             </div>
             <div>
                 <label>title</label>
-                <input name="title" type="text" th:text="${board.title}">
+                <input name="title" type="text" th:value="${board.title}">
             </div>
             <div>
                 <label>content</label>

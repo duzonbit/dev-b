@@ -7,14 +7,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 @Table(name = "board",schema="mini01")
 public class BoardDTO{
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY) 
+	@GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column
     private int idx;
     @Column
@@ -24,10 +25,14 @@ public class BoardDTO{
     @Column
     private String title;
     @Column
-    private String content;
-    @Column
-    private Date regdate;
-    @Column
+	private String content;
+	
+	@Column
+	@CreationTimestamp
+	private Date regdate;	
+
+	@Column
+	@CreationTimestamp
     private Date modifydate;
 
 	public int getIdx() {

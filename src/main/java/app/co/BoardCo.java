@@ -21,12 +21,6 @@ public class BoardCo {
 	
 	@Autowired
 	BoardRepo boardRepo;
-
-    @GetMapping("/generate")
-    public String generate(){
-        
-        return "generate";
-    }
     
     @GetMapping("/create")
     public String createV() {
@@ -61,7 +55,7 @@ public class BoardCo {
         return "read";
     }
 
-    @GetMapping("/update/{idx}")//TODO 시마이
+    @GetMapping("/update/{idx}")
     public String updateV(@PathVariable int idx, Model model){
         BoardDTO boardDTO = boardSe.read(idx);
 		System.out.println(boardDTO.toString());
@@ -69,15 +63,15 @@ public class BoardCo {
         return "update";
     }
 
-    // @PostMapping("/update/{idx}/")//TODO
-    // public String update(BoardDTO boardDTO) {
-    //     System.out.println(boardDTO.toString());
-    //     boardSe.update(boardDTO);
-    //     return "redirect:/";
-    // }
+    @PostMapping("/update/")//TODO
+    public String update( BoardDTO boardDTO) {
+        boardSe.update(boardDTO);
+        return "redirect:/";
+    }
 
-    @PostMapping("/delete/{idx}/name/{name}/pw/{pw}")//TODO
-    public String delete(Model model) {
+    @PostMapping("/delete")//TODO
+    public String delete(BoardDTO boardDTO) {
+        boardSe.delete(boardDTO);
         return "redirect:/";
     }
 }
