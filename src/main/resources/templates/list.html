@@ -1,9 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.thymeleaf.org">
 <head>
-    <title>Document</title>
+    <title>LIST</title>
 </head>
 <body>
-    test
+    <header>
+        <h1>LIST</h1>
+    </header>
+    <article>
+        <table>
+            <tr>
+                <th>idx</th>
+                <th>name</th>
+                <th>pw</th>
+                <th>title</th>
+                <th>content</th>
+                <th>regdate</th>
+                <th>modifydate</th>
+            </tr>
+            <tr th:each="row : ${list}">
+                <td th:text="${row.idx}"></td>
+                <td th:text="${row.name}"></td>
+                <td th:text="${row.pw}"></td>
+                <td th:text="${row.title}"></td>
+                <td th:text="${row.content}"></td>
+                <td th:text="${row.regdate}"></td>
+                <td th:text="${row.modifydate}"></td>
+            </tr>
+        </table>
+    </article>
+    <footer>
+            <!-- 페이징 처리 구간 -->
+    </footer>
 </body>
 </html>

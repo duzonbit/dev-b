@@ -1,13 +1,27 @@
 package app.co;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import app.mo.BoardDTO;
+import app.repo.BoardRepo;
+import app.se.BoardSe;
 
 @Controller
 public class BoardCo {
     
+	@Autowired
+	BoardSe boardSe;
+	
+	@Autowired
+	BoardRepo boardRepo;
+
     @GetMapping("/generate")
     public String generate(){
         
@@ -16,43 +30,53 @@ public class BoardCo {
     
     @GetMapping("/create")
     public String createV() {
-        return "creat";
+        return "create";
     }
     
     @PostMapping(value="/create")
-    public String create() {
-        return "list";
+    public String create(BoardDTO boardDTO) {
+        boardSe.create(boardDTO);
+		return "redirect:/";
     }
 
     
     @GetMapping("/")
     public String list(Model model) {
-        return "list";
+        List<BoardDTO> list = boardSe.findAll();
+		System.out.println("list");
+		model.addAttribute("list", list);
+		return "list";
     }
 
-    @GetMapping("/{page}")
+    @GetMapping("/{page}")//TODO
     public String page(Model model) {
         return "list";
     }
 
     @GetMapping("/read/{idx}")
-    public String read(Model model){
+    public String read(@PathVariable int idx, Model model){
+        BoardDTO boardDTO = boardSe.read(idx);
+		System.out.println(boardDTO.toString());
+		model.addAttribute("board", boardDTO);
         return "read";
     }
 
-
-    @GetMapping("/update/{idx}")
-    public String updateV(Model model){
+    @GetMapping("/update/{idx}")//TODO 시마이
+    public String updateV(@PathVariable int idx, Model model){
+        BoardDTO boardDTO = boardSe.read(idx);
+		System.out.println(boardDTO.toString());
+		model.addAttribute("board", boardDTO);
         return "update";
     }
 
-    @PostMapping("/update/{idx}/name/{name}/pw/{pw}")
-    public String update(Model model) {
-        
-        return "redirect:/";
-    }
+    // @PostMapping("/update/{idx}/")//TODO
+    // public String update(BoardDTO boardDTO) {
+    //     System.out.println(boardDTO.toString());
+    //     boardSe.update(boardDTO);
+    //     return "redirect:/";
+    // }
 
-    @PostMapping("/delete/{idx}/name/{name}/pw/{pw}")
+    @PostMapping("/delete/{idx}/name/{name}/pw/{pw}")//TODO
     public String delete(Model model) {
         return "redirect:/";
     }
