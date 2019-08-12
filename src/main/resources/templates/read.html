@@ -1,9 +1,53 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.thymeleaf.org">
+
 <head>
-    <title>Document</title>
+    <title>READ</title>
 </head>
+
 <body>
-    
+    <header>
+        <h1>READ</h1>
+    </header>
+    <article>
+        <table>
+            <tr>
+                <th>key</th>
+                <th>value</th>
+            </tr>
+            <tr>
+                <td>idx</td>
+                <td th:text="${board.idx}"></td>
+            </tr>
+            <tr>
+                <td>name</td>
+                <td th:text="${board.name}"></td>
+            </tr>
+            <tr>
+                <td>pw</td>
+                <td th:text="${board.pw}"></td>
+            </tr>
+            <tr>
+                <td>title</td>
+                <td th:text="${board.title}"></td>
+            </tr>
+            <tr>
+                <td>content</td>
+                <td th:text="${board.content}"></td>
+            </tr>
+            <tr>
+                <td>regdate</td>
+                <td th:text="${board.regdate}"></td>
+            </tr>
+            <tr>
+                <td>modifydate</td>
+                <td th:text="${board.modifydate}"></td>
+            </tr>
+        </table>
+    </article>
+    <footer>
+        <button onclick="location.href='/';">처음으로</button>
+    </footer>
 </body>
+
 </html>
