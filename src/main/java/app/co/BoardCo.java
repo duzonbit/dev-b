@@ -37,12 +37,11 @@ public class BoardCo {
     @GetMapping("/")
     public String list(Model model) {
         List<BoardDTO> list = boardSe.findAll();
-		System.out.println("list");
 		model.addAttribute("list", list);
 		return "list";
     }
 
-    @GetMapping("/{page}")//TODO
+    @GetMapping("/{page}")
     public String page(Model model) {
         return "list";
     }
@@ -50,7 +49,6 @@ public class BoardCo {
     @GetMapping("/read/{idx}")
     public String read(@PathVariable int idx, Model model){
         BoardDTO boardDTO = boardSe.read(idx);
-		System.out.println(boardDTO.toString());
 		model.addAttribute("board", boardDTO);
         return "read";
     }
@@ -58,18 +56,17 @@ public class BoardCo {
     @GetMapping("/update/{idx}")
     public String updateV(@PathVariable int idx, Model model){
         BoardDTO boardDTO = boardSe.read(idx);
-		System.out.println(boardDTO.toString());
 		model.addAttribute("board", boardDTO);
         return "update";
     }
 
-    @PostMapping("/update/")//TODO
+    @PostMapping("/update/")
     public String update( BoardDTO boardDTO) {
         boardSe.update(boardDTO);
         return "redirect:/";
     }
 
-    @PostMapping("/delete")//TODO
+    @PostMapping("/delete")
     public String delete(BoardDTO boardDTO) {
         boardSe.delete(boardDTO);
         return "redirect:/";

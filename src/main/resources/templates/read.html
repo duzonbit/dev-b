@@ -11,6 +11,7 @@
     </header>
     <article>
         <form action="/delete" method="POST">
+            <input type="hidden" name="idx" th:value ="${idx}">
             <table>
                 <tr>
                     <th>key</th>
@@ -18,11 +19,11 @@
                 </tr>
                 <tr>
                     <td>idx</td>
-                    <td name="idx" th:text="${board.idx}"></td>
+                    <td th:text="${board.idx}"></td>
                 </tr>
                 <tr>
                     <td>name</td>
-                    <td name="name" th:text="${board.name}"></td>
+                    <td th:text="${board.name}"></td>
                 </tr>
                 <tr>
                     <td>pw</td>
@@ -32,19 +33,19 @@
                 </tr>
                 <tr>
                     <td>title</td>
-                    <td name="title" th:text="${board.title}"></td>
+                    <td th:text="${board.title}"></td>
                 </tr>
                 <tr>
                     <td>content</td>
-                    <td name="content" th:text="${board.content}"></td>
+                    <td th:text="${board.content}"></td>
                 </tr>
                 <tr>
                     <td>regdate</td>
-                    <td name="regdate" th:text="${board.regdate}"></td>
+                    <td th:text="${board.regdate}"></td>
                 </tr>
                 <tr>
                     <td>modifydate</td>
-                    <td name="modifydate" th:text="${board.modifydate}"></td>
+                    <td th:text="${board.modifydate}"></td>
                 </tr>
             </table>
             <button>삭제하기</button>

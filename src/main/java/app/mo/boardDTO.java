@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Table(name = "board",schema="mini01")
@@ -27,12 +28,17 @@ public class BoardDTO{
     @Column
 	private String content;
 	
-	@Column
+	@Column(
+		nullable = false,
+		updatable = false
+	)
 	@CreationTimestamp
 	private Date regdate;	
 
-	@Column
-	@CreationTimestamp
+	@Column(
+		nullable = false
+	)
+	@UpdateTimestamp
     private Date modifydate;
 
 	public int getIdx() {
@@ -83,6 +89,4 @@ public class BoardDTO{
 		return "BoardDTO [content=" + content + ", idx=" + idx + ", modifydate=" + modifydate + ", name=" + name
 				+ ", pw=" + pw + ", regdate=" + regdate + ", title=" + title + "]";
 	}
-
-    
 }
