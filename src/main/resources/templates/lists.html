@@ -38,24 +38,8 @@
         </table>
     </article>
     <footer>
-        <div>
-            <ul>
-                <li th:class="${page.first} ? 'disabled':''" style="display:inline">
-                    <span th:if="${page.first}">←</span>
-                    <a th:if="${not page.first}" th:href="@{'/'+1}">←</a>
-                </li>
-                <li th:each='i : ${#numbers.sequence(0, page.totalPages-1)}' th:class="(${i}==${page.number})? 'active' : ''" style="display:inline">
-                    <span th:if='${i}==${page.number}' th:text='${i+1}'>1</span>
-                    <a th:if='${i}!=${page.number}' th:href="@{'/'+${i}}">
-                        <span th:text='${i+1}'>1</span>
-                    </a>
-                </li>
-                <li th:class="${page.last} ? 'disabled':''" style="display:inline">
-                    <span th:if="${page.last}">➝</span>
-                    <a th:if="${not page.last}" th:href="@{'/'+${page.totalPages}}">➝</a>
-                </li>
-            </ul>
-        </div>
+            <!-- 페이징 처리 구간 -->
+            <button onclick="location.href='/create'">글쓰기</button>
     </footer>
 </body>
 </html>
