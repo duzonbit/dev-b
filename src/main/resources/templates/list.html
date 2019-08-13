@@ -39,22 +39,12 @@
     </article>
     <footer>
         <div>
-            <ul>
-                <li th:class="${page.first} ? 'disabled':''" style="display:inline">
-                    <span th:if="${page.first}">←</span>
-                    <a th:if="${not page.first}" th:href="@{'/'+1}">←</a>
-                </li>
-                <li th:each='i : ${#numbers.sequence(0, page.totalPages-1)}' th:class="(${i}==${page.number})? 'active' : ''" style="display:inline">
-                    <span th:if='${i}==${page.number}' th:text='${i+1}'>1</span>
-                    <a th:if='${i}!=${page.number}' th:href="@{'/'+${i}}">
-                        <span th:text='${i+1}'>1</span>
-                    </a>
-                </li>
-                <li th:class="${page.last} ? 'disabled':''" style="display:inline">
-                    <span th:if="${page.last}">➝</span>
-                    <a th:if="${not page.last}" th:href="@{'/'+${page.totalPages}}">➝</a>
-                </li>
-            </ul>
+            <a th:if="${not page.first}" th:href="@{'/'+1}">←</a>
+            
+            <a th:each='i : ${#numbers.sequence(page.number, page.number+page.size)}' th:if='${i}!=${page.number}' th:href="@{'/'+${i}}">
+                <span th:text='${i}'></span>
+            </a>
+            <a th:if="${not page.last}" th:href="@{'/'+${page.totalPages}}">➝</a>
         </div>
     </footer>
 </body>

@@ -86,12 +86,12 @@ public class BoardC {
         return "redirect:/";
     }
 
+    @ResponseBody
     @GetMapping("/test/page")
-    public String page1(Model model) {
+    public Page<BoardM> page1(Model model) {
         Pageable pageable = PageRequest.of(0, 10, new Sort(Direction.DESC, "idx"));
         Page<BoardM> page = boardRepo.findAll(pageable);
-        model.addAttribute("page", page);
-        return "lists";
+        return page;
     }
 
     @ResponseBody
