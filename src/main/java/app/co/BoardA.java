@@ -37,9 +37,9 @@ public class BoardA {
         return page;
     }
 
-    @RequestMapping(value={"/read/{idx}"}, method=RequestMethod.GET)
-    public BoardM read(@PathVariable int idx){
-        BoardM bm = bs.read(idx);
+    @RequestMapping(value={"/read/{index}"}, method=RequestMethod.GET)
+    public BoardM read(@PathVariable int index){
+        BoardM bm = bs.read(index);
         return bm;
     }
 
