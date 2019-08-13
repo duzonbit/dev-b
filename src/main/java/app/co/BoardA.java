@@ -1,12 +1,12 @@
 package app.co;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RestController;
 
 import app.repo.BoardR;
 import app.se.BoardS;
 
-@Controller
+@RestController("/board")
 public class BoardA {
 
     @Autowired

@@ -40,7 +40,6 @@
     <footer>
         <div>
             <a th:if="${not page.first}" th:href="@{'/'+1}">←</a>
-
             <a th:each='i : ${#numbers.sequence(page.number, ((page.number+page.size)<page.totalPages)?page.number+page.size:page.totalPages)}' th:if='${i}!=${page.number}' th:href="@{'/'+${i}}">
                 <span th:text='${i}'></span>
             </a>
