@@ -27,21 +27,27 @@ public class BoardS {
     return boardRepo.findById(idx).orElse(null);
   }
   
-  public void update(BoardM boardDTO) {
+  public boolean update(BoardM boardDTO) {
     BoardM res= boardRepo.findById(boardDTO.getIdx()).orElse(null);
       
     if(res.getIdx()==boardDTO.getIdx()
     &&res.getName().equals(boardDTO.getName())
     &&res.getPw().equals(boardDTO.getPw())){
       boardRepo.save(boardDTO);
+      return true;
+    }else{
+      return false;
     }
   }
 
-  public void delete(BoardM boardDTO){
+  public boolean delete(BoardM boardDTO){
     BoardM res= boardRepo.findById(boardDTO.getIdx()).orElse(null);
     if(res.getIdx()==boardDTO.getIdx()
     &&res.getPw().equals(boardDTO.getPw())){
       boardRepo.deleteById(boardDTO.getIdx());
+      return true;
+    }else{
+      return false;
     }
   }
 }
