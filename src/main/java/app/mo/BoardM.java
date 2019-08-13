@@ -14,7 +14,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Table(name = "board",schema="mini01")
-public class BoardDTO{
+public class BoardM{
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column

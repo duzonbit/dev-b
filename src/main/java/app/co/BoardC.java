@@ -9,18 +9,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import app.mo.BoardDTO;
-import app.repo.BoardRepo;
-import app.se.BoardSe;
+import app.mo.BoardM;
+import app.repo.BoardR;
+import app.se.BoardS;
 
 @Controller
-public class BoardCo {
+public class BoardC {
     
 	@Autowired
-	BoardSe boardSe;
+	BoardS boardSe;
 	
 	@Autowired
-	BoardRepo boardRepo;
+	BoardR boardRepo;
     
     @GetMapping("/create")
     public String createV() {
@@ -28,7 +28,7 @@ public class BoardCo {
     }
     
     @PostMapping(value="/create")
-    public String create(BoardDTO boardDTO) {
+    public String create(BoardM boardDTO) {
         boardSe.create(boardDTO);
 		return "redirect:/";
     }
@@ -36,7 +36,7 @@ public class BoardCo {
     
     @GetMapping("/")
     public String list(Model model) {
-        List<BoardDTO> list = boardSe.findAll();
+        List<BoardM> list = boardSe.findAll();
 		model.addAttribute("list", list);
 		return "list";
     }
@@ -48,26 +48,26 @@ public class BoardCo {
 
     @GetMapping("/read/{idx}")
     public String read(@PathVariable int idx, Model model){
-        BoardDTO boardDTO = boardSe.read(idx);
+        BoardM boardDTO = boardSe.read(idx);
 		model.addAttribute("board", boardDTO);
         return "read";
     }
 
     @GetMapping("/update/{idx}")
     public String updateV(@PathVariable int idx, Model model){
-        BoardDTO boardDTO = boardSe.read(idx);
+        BoardM boardDTO = boardSe.read(idx);
 		model.addAttribute("board", boardDTO);
         return "update";
     }
 
     @PostMapping("/update/")
-    public String update( BoardDTO boardDTO) {
+    public String update( BoardM boardDTO) {
         boardSe.update(boardDTO);
         return "redirect:/";
     }
 
     @PostMapping("/delete")
-    public String delete(BoardDTO boardDTO) {
+    public String delete(BoardM boardDTO) {
         boardSe.delete(boardDTO);
         return "redirect:/";
     }

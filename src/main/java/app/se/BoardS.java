@@ -6,31 +6,29 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import app.mo.BoardDTO;
-import app.repo.BoardRepo;
+import app.mo.BoardM;
+import app.repo.BoardR;
 
 @Service
-public class BoardSe {
+public class BoardS {
 
   @Autowired
-  BoardRepo boardRepo;
+  BoardR boardRepo;
 
-  public List<BoardDTO> findAll() {
+  public List<BoardM> findAll() {
     return boardRepo.findAll();
   }
 
-  public void create(BoardDTO boardDTO) {
+  public void create(BoardM boardDTO) {
     boardRepo.saveAndFlush(boardDTO);
   }
 
-  public BoardDTO read(int idx) {
+  public BoardM read(int idx) {
     return boardRepo.findById(idx).orElse(null);
   }
   
-  public void update(BoardDTO boardDTO) {
-    BoardDTO res= boardRepo.findById(boardDTO.getIdx()).orElse(null);
-    if(res==null)
-      return;
+  public void update(BoardM boardDTO) {
+    BoardM res= boardRepo.findById(boardDTO.getIdx()).orElse(null);
       
     if(res.getIdx()==boardDTO.getIdx()
     &&res.getName().equals(boardDTO.getName())
@@ -39,8 +37,8 @@ public class BoardSe {
     }
   }
 
-  public void delete(BoardDTO boardDTO){
-    BoardDTO res= boardRepo.findById(boardDTO.getIdx()).orElse(null);
+  public void delete(BoardM boardDTO){
+    BoardM res= boardRepo.findById(boardDTO.getIdx()).orElse(null);
     if(res.getIdx()==boardDTO.getIdx()
     &&res.getPw().equals(boardDTO.getPw())){
       boardRepo.deleteById(boardDTO.getIdx());
