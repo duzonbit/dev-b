@@ -1,1 +1,8 @@
-GET https://
+GET http://localhost:8080/board/read/100
+
+###
+
+GET http://localhost:8080/board/
+
+
+
