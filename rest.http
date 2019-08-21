@@ -1,13 +1,13 @@
-### BOARD
+### bbs
 
-GET http://localhost:8080/board/read/100
+GET http://dev-b.zcvfcat.ga/bbs/read/100
 
 ### PAGE
 
-GET http://localhost:8080/board/1
+GET http://dev-b.zcvfcat.ga/bbs/list/1
 
 ### INSERT
-POST http://localhost:8080/board/ HTTP/1.1
+POST http://dev-b.zcvfcat.ga/bbs HTTP/1.1
 content-type: application/json
 User-Agent: rest-client
 
@@ -19,25 +19,25 @@ User-Agent: rest-client
 }
 
 ### UPDATE
-PUT  http://localhost:8080/board/ HTTP/2.0
+PUT  http://dev-b.zcvfcat.ga/bbs/79 HTTP/2.0
 content-type: application/json
 User-Agent: rest-client
 
 {
-    "idx" : "20",
-    "name" : "test",
+    "idx" : "80",
+    "name" : "1",
     "pw" : "1",
-    "title" : "60",
-    "content" : "60"
+    "title" : "40",
+    "content" : "40"
 }
 
 ### DELETE
-DELETE  http://localhost:8080/board/ HTTP/2.0
+DELETE  http://dev-b.zcvfcat.ga/bbs/80 HTTP/2.0
 content-type: application/json
 User-Agent: rest-client
 
 {
-    "idx" : "20",
-    "name" : "test",
+    "idx" : "80",
+    "name" : "1",
     "pw" : "1"
 }

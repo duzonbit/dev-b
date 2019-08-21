@@ -1,4 +1,4 @@
-package app.mo;
+package app.model;
 
 import java.util.Date;
 
@@ -13,8 +13,8 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
-@Table(name = "board",schema="mini01")
-public class BoardM{
+@Table(name = "bbs",schema="mini01")
+public class BbsModel{
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column
@@ -83,10 +83,4 @@ public class BoardM{
 	public void setModifydate(Date modifydate) {
 		this.modifydate = modifydate;
     }
-    
-	@Override
-	public String toString() {
-		return "BoardDTO [content=" + content + ", idx=" + idx + ", modifydate=" + modifydate + ", name=" + name
-				+ ", pw=" + pw + ", regdate=" + regdate + ", title=" + title + "]";
-	}
 }

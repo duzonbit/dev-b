@@ -1,9 +1,9 @@
 server:
-  port: 8080
+  port: 63002
 ---
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://study.cld00jltpvw6.ap-northeast-2.rds.amazonaws.com:3306/mini01?serverTimezone=UTC&useSSL=false
-    username: mini01
-    password: ejwhsqlwmdhs
+    url: jdbc:mysql://218.39.221.74:3306/mini01?serverTimezone=UTC&useSSL=false
+    username: 'mini01'
+    password: '0000'
