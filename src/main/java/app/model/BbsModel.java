@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -27,7 +28,10 @@ public class BbsModel{
     private String title;
     @Column
 	private String content;
-	
+
+	@Column(insertable=false, updatable=false)
+	private String category;
+
 	@Column(
 		nullable = false,
 		updatable = false
@@ -71,6 +75,16 @@ public class BbsModel{
 	public void setContent(String content) {
 		this.content = content;
 	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+	
+
 	public Date getRegdate() {
 		return regdate;
 	}

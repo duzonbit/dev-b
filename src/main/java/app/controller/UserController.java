@@ -25,37 +25,51 @@ import app.service.UserService;
 public class UserController {
 
     @Autowired
-    UserService us;
+    UserService userService;
 
-    @Autowired
-    UserRepo ur;
-
-    @GetMapping(value = { "/read/{index}" })
-    public UserModel read(@PathVariable int index) {
-        UserModel um = us.read(index);
-        return um;
-    }
-
+    //! 회원가입
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public Map<String, String> insert(@RequestBody UserModel um) {
+    public Map<String, String> insert(@RequestBody UserModel userModel) {
         Map<String, String> map = new HashMap<String, String>();
-        us.create(um);
+        userService.create(userModel);
         map.put("message", "success");
         return map;
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.PUT)
-    public Map<String, String> update(@RequestBody UserModel mm) {
+    //! 로그인
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public Map<String, String> login(@RequestBody UserModel userModel) {
+        System.out.println();
         Map<String, String> map = new HashMap<String, String>();
-        String msg = us.update(mm) ? "success" : "fail";
+        String msg = userService.login(userModel.getUser_id(), userModel.getPw()) ? "success" : "fail";
         map.put("message", msg);
         return map;
     }
 
+    //! 아이디 중복체크
+    @RequestMapping(value = "/check/{id}", method = RequestMethod.POST)
+    public Map<String, String> loginCheck(@PathVariable String id) {
+        System.out.println(id);
+        Map<String, String> map = new HashMap<String, String>();
+        String msg = userService.loginCheck(id) ? "success" : "fail";
+        map.put("message", msg);
+        return map;
+    }
+
+    //! 회원 수정
+    @RequestMapping(value = "/", method = RequestMethod.PUT)
+    public Map<String, String> update(@RequestBody UserModel mm) {
+        Map<String, String> map = new HashMap<String, String>();
+        String msg = userService.update(mm) ? "success" : "fail";
+        map.put("message", msg);
+        return map;
+    }
+    
+    //! 회원 삭제
     @RequestMapping(value = { "/" }, method = RequestMethod.DELETE)
     public Map<String, String> delete(@RequestBody UserModel mm) {
         Map<String, String> map = new HashMap<String, String>();
-        String msg = us.delete(mm) ? "success" : "fail";
+        String msg = userService.delete(mm) ? "success" : "fail";
         map.put("message", msg);
         return map;
     }
