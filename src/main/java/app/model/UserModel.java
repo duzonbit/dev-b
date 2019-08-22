@@ -8,11 +8,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "user",schema="mini01")
+@Table(name = "user", schema = "mini01")
 public class UserModel {
 
     @Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private int idx; // 기본키
     @Column
@@ -52,10 +52,5 @@ public class UserModel {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return "MemberM [user_id=" + user_id + ", idx=" + idx + ", name=" + name + ", pw=" + pw + "]";
     }
 }

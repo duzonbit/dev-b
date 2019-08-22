@@ -13,64 +13,68 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
-@Table(name = "bbs",schema="mini01")
-public class BbsModel{
+@Table(name = "bbs", schema = "mini01")
+public class BbsModel {
 	@Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
-    @Column
-    private int idx;
-    @Column
-    private String name;
-    @Column
-    private String pw;
-    @Column
-    private String title;
-    @Column
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column
+	private int idx;
+	@Column
+	private String name;
+	@Column
+	private String pw;
+	@Column
+	private String title;
+	@Column
 	private String content;
 
-	@Column(insertable=false, updatable=false)
+	@Column(insertable = false, updatable = false)
 	private String category;
 
-	@Column(
-		nullable = false,
-		updatable = false
-	)
+	@Column(nullable = false, updatable = false)
 	@CreationTimestamp
-	private Date regdate;	
+	private Date regdate;
 
-	@Column(
-		nullable = false
-	)
+	@Column(nullable = false)
 	@UpdateTimestamp
-    private Date modifydate;
+	private Date modifydate;
 
 	public int getIdx() {
 		return idx;
 	}
+
 	public void setIdx(int idx) {
 		this.idx = idx;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public String getPw() {
 		return pw;
 	}
+
 	public void setPw(String pw) {
 		this.pw = pw;
 	}
+
 	public String getTitle() {
 		return title;
 	}
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
+
 	public String getContent() {
 		return content;
 	}
+
 	public void setContent(String content) {
 		this.content = content;
 	}
@@ -82,18 +86,20 @@ public class BbsModel{
 	public void setCategory(String category) {
 		this.category = category;
 	}
-	
 
 	public Date getRegdate() {
 		return regdate;
 	}
+
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
+
 	public Date getModifydate() {
 		return modifydate;
 	}
+
 	public void setModifydate(Date modifydate) {
 		this.modifydate = modifydate;
-    }
+	}
 }

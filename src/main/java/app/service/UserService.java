@@ -22,25 +22,25 @@ public class UserService {
         userRepo.saveAndFlush(userDTO);
     }
 
-    public boolean login(String id, String pw) {  //! 로그인---------
+    public boolean login(String id, String pw) {
         UserModel user = userRepo.findByUserId(id);
-        if(user == null) {
+        if (user == null) {
             return false;
         }
-        if(!user.getPw().equals(pw)){
+        if (!user.getPw().equals(pw)) {
             return false;
         }
         return true;
     }
 
-    public boolean loginCheck(String id) {  //! 아이디 중복 체크---------
+    public boolean loginCheck(String id) {
         UserModel user = userRepo.findByUserId(id);
         System.out.println(user);
         if (user == null) {
-			return true; // 입력한 아이디가 이미 존재함
-		} else {
-			return false; // 아이디 사용 가능
-		}
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public UserModel read(int idx) {

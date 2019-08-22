@@ -7,15 +7,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-/**
- * CommentM
- */
 @Entity
 @Table(name = "comment", schema = "mini01")
 public class CommentModel {
 
     @Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private int idx; // 기본키
     @Column
@@ -67,9 +64,4 @@ public class CommentModel {
         this.content = content;
     }
 
-    @Override
-    public String toString() {
-        return "CommentM [Bbs_idx=" + bbs_idx + ", content=" + content + ", idx=" + idx + ", name=" + name
-                + ", user_idx=" + user_idx + "]";
-    }
 }

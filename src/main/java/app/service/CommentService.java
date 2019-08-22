@@ -8,9 +8,6 @@ import org.springframework.stereotype.Service;
 import app.model.CommentModel;
 import app.repository.CommentRepo;
 
-/**
- * CommentS
- */
 @Service
 public class CommentService {
 
@@ -28,9 +25,8 @@ public class CommentService {
     public boolean update(CommentModel commentModel) {
         CommentModel res = commentRepo.findById(commentModel.getIdx()).orElse(null);
 
-        if (res.getIdx() == commentModel.getIdx() &&
-            res.getUser_idx() == commentModel.getUser_idx() && 
-            res.getBbs_idx() == commentModel.getBbs_idx()) {
+        if (res.getIdx() == commentModel.getIdx() && res.getUser_idx() == commentModel.getUser_idx()
+                && res.getBbs_idx() == commentModel.getBbs_idx()) {
             commentRepo.save(commentModel);
             return true;
         } else {
