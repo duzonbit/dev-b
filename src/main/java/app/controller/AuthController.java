@@ -8,5 +8,5 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin("origin-allowed=*")
 @RequestMapping(value="/auth")
 public class AuthController {
-    //로그인 회원가입
+    //signIn signOut signUp
 }

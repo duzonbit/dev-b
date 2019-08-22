@@ -18,7 +18,7 @@ import app.service.UserService;
 @CrossOrigin("origin-allowed=*") 
 @RequestMapping(value = "/user")
 public class UserController {
-    //관리자 삭제 및 유저 컨트롤
+    //관리자 추가 삭제 및 유저 컨트롤
     @Autowired
     UserService userService;
 
