@@ -1,4 +1,4 @@
-package app.controller;
+package app.controller.bbs;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,54 +17,54 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import app.model.BbsModel;
-import app.repository.BbsRepo;
-import app.service.BbsService;
+import app.model.bbs.Bbs_EntertainModel;
+import app.repository.bbs.Bbs_EntertainRepo;
+import app.service.impl.Bbs_EntertainServiceimpl;
 
 @RestController
 @CrossOrigin("origin-allowed=*")
-@RequestMapping(value = "/bbs")
-public class BbsController {
+@RequestMapping(value = "/bbsentertain")
+public class Bbs_EntertainController {
 
     @Autowired
-    BbsService bbsService;
+    Bbs_EntertainServiceimpl bbs_EntertainService;
 
     @Autowired
-    BbsRepo bbsRepo;
+    Bbs_EntertainRepo bbs_EntertainRepo;
 
     @RequestMapping(value = { "", "/", "/{idx}" }, method = RequestMethod.GET)
-    public Page<BbsModel> list(@PathVariable Optional<Integer> idx) {
+    public Page<Bbs_EntertainModel> list(@PathVariable Optional<Integer> idx) {
         Pageable pageable = PageRequest.of(idx.orElse(1) - 1, 10, new Sort(Direction.DESC, "idx"));
-        Page<BbsModel> page = bbsRepo.findAll(pageable);
+        Page<Bbs_EntertainModel> page = bbs_EntertainRepo.findAll(pageable);
         return page;
     }
 
     @RequestMapping(value = "/read/{idx}", method = RequestMethod.GET)
-    public BbsModel read(@PathVariable int idx) {
-        BbsModel bm = bbsService.read(idx);
+    public Bbs_EntertainModel read(@PathVariable int idx) {
+        Bbs_EntertainModel bm = bbs_EntertainService.read(idx);
         return bm;
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public Map<String, String> insert(@RequestBody BbsModel bbsModel) {
+    public Map<String, String> insert(@RequestBody Bbs_EntertainModel bm) {
         Map<String, String> map = new HashMap<String, String>();
-        bbsService.create(bbsModel);
+        bbs_EntertainService.create(bm);
         map.put("message", "success");
         return map;
     }
 
     @RequestMapping(value = "/{idx}", method = RequestMethod.PUT)
-    public Map<String, String> update(@RequestBody BbsModel bbsModel, @PathVariable Optional<Integer> idx) {
+    public Map<String, String> update(@RequestBody Bbs_EntertainModel bm, @PathVariable Optional<Integer> idx) {
         Map<String, String> map = new HashMap<String, String>();
-        String message = bbsService.update(bbsModel,idx) ? "success" : "fail";
+        String message = bbs_EntertainService.update(bm,idx) ? "success" : "fail";
         map.put("message", message);
         return map;
     }
 
     @RequestMapping(value = "/{idx}", method = RequestMethod.DELETE)
-    public Map<String, String> delete(@RequestBody BbsModel bbsModel, @PathVariable Optional<Integer> idx) {
+    public Map<String, String> delete(@RequestBody Bbs_EntertainModel bm, @PathVariable Optional<Integer> idx) {
         Map<String, String> map = new HashMap<String, String>();
-        String message = bbsService.delete(bbsModel,idx) ? "success" : "fail";
+        String message = bbs_EntertainService.delete(bm,idx) ? "success" : "fail";
         map.put("message", message);
         return map;
     }

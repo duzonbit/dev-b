@@ -1,4 +1,4 @@
-package app.model;
+package app.model.comment;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,19 +8,21 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "user", schema = "mini01")
-public class UserModel {
+@Table(name = "comment", schema = "mini01")
+public class CommentModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private int idx; // 기본키
     @Column
-    private String user_id;
+    private int user_idx;
     @Column
-    private String pw;
+    private int bbs_idx;
     @Column
     private String name;
+    @Column
+    private String content;
 
     public int getIdx() {
         return idx;
@@ -30,20 +32,20 @@ public class UserModel {
         this.idx = idx;
     }
 
-    public String getUser_id() {
-        return user_id;
+    public int getUser_idx() {
+        return user_idx;
     }
 
-    public void setUser_id(String user_id) {
-        this.user_id = user_id;
+    public void setUser_idx(int user_idx) {
+        this.user_idx = user_idx;
     }
 
-    public String getPw() {
-        return pw;
+    public int getBbs_idx() {
+        return bbs_idx;
     }
 
-    public void setPw(String pw) {
-        this.pw = pw;
+    public void setBbs_idx(int bbs_idx) {
+        this.bbs_idx = bbs_idx;
     }
 
     public String getName() {
@@ -53,4 +55,13 @@ public class UserModel {
     public void setName(String name) {
         this.name = name;
     }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
 }

@@ -1,4 +1,4 @@
-package app.controller;
+package app.controller.comment;
 
 import java.util.HashMap;
 import java.util.List;
@@ -13,8 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import app.model.CommentModel;
+import app.model.comment.CommentModel;
 import app.service.CommentService;
+;
 
 /**
  * CommentM

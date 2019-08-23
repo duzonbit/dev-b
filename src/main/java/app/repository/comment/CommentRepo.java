@@ -1,11 +1,12 @@
-package app.repository;
+package app.repository.comment;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import app.model.CommentModel;;
+import app.model.comment.CommentModel;
+
 
 /**
  * CommentR

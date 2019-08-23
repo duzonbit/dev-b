@@ -1,6 +1,6 @@
 ### bbs
 
-GET http://dev-b.zcvfcat.ga/bbs/read/100
+GET http://localhost:63002/bbseconomy/read/146
 
 ### PAGE
 
@@ -40,4 +40,31 @@ User-Agent: rest-client
     "idx" : "80",
     "name" : "1",
     "pw" : "1"
+}
+
+### bbs
+GET http://localhost:63002/bbseconomy/read/146
+
+###create
+POST http://localhost:63002/bbseconomy/ HTTP/1.1
+content-type: application/json
+User-Agent: rest-client
+
+{
+    "name" : "7",
+    "pw" : "7",
+    "title" : "7",
+    "content" : "7",
+    "category" : "economy"
+}
+
+### DELETE
+DELETE  http://localhost:63002/bbsentertain/147 HTTP/2.0
+content-type: application/json
+User-Agent: rest-client
+
+{
+    "idx" : "147",
+    "name" : "2",
+    "pw" : "2"
 }
