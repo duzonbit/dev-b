@@ -31,7 +31,7 @@ public class Bbs_EconomyController {
 
     @Autowired
     Bbs_EconomyRepo bbs_EconomyRepo;
-
+    // {"", "/", "/{idx}}" 경우 수를 세가지 두는것
     @RequestMapping(value = { "", "/", "/{idx}" }, method = RequestMethod.GET)
     public Page<Bbs_EconomyModel> list(@PathVariable Optional<Integer> idx) {
         Pageable pageable = PageRequest.of(idx.orElse(1) - 1, 10, new Sort(Direction.DESC, "idx"));

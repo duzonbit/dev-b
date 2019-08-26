@@ -8,9 +8,9 @@ import app.model.user.UserModel;
  */
 public interface UserService {
 
-    public List<UserModel> findAll();
+    public boolean login(String id, String pw);
 
-    public void create(UserModel userDTO);
+    public boolean loginCheck(String id);
 
     public UserModel read(int idx);
 

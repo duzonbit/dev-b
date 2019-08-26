@@ -15,5 +15,9 @@ public interface CommentService {
     public boolean update(CommentModel commentModel);
 
     public boolean delete(CommentModel commentModel);
+
+    public List<CommentModel> count(int bbs_idx, int curpage);
+
+    public int maxpage(int bbs_idx);
     
 }

@@ -15,39 +15,51 @@ public class UserServiceimpl implements UserService {
     @Autowired
     UserRepo userRepo;
 
-    @Override
-    public List<UserModel> findAll() {
-        return userRepo.findAll();
+    public void create(UserModel userModel) {
+        userRepo.saveAndFlush(userModel);
     }
 
-    @Override
-    public void create(UserModel userDTO) {  //TODO 유효성 검사
-        userRepo.saveAndFlush(userDTO);
+    public boolean login(String id, String pw) {  //! 로그인---------
+        UserModel userModel = userRepo.findByUserId(id);
+        if(userModel == null) {
+            return false;
+        }
+        if(!userModel.getPw().equals(pw)){
+            return false;
+        }
+        return true;
     }
 
-    @Override
+    public boolean loginCheck(String id) {  //! 아이디 중복 체크---------
+        UserModel userModel = userRepo.findByUserId(id);
+        System.out.println(userModel);
+        if (userModel == null) {
+			return true; // 입력한 아이디가 이미 존재함
+		} else {
+			return false; // 아이디 사용 가능
+		}
+    }
+
     public UserModel read(int idx) {
         return userRepo.findById(idx).orElse(null);
     }
 
-    @Override
-    public boolean update(UserModel userDTO) {  //TODO 유효성 검사
-        UserModel res = userRepo.findById(userDTO.getIdx()).orElse(null);
+    public boolean update(UserModel userModel) {
+        UserModel res = userRepo.findById(userModel.getIdx()).orElse(null);
 
-        if (res.getIdx() == userDTO.getIdx() && res.getName().equals(userDTO.getName())
-                && res.getPw().equals(userDTO.getPw())) {
-            userRepo.save(userDTO);
+        if (res.getIdx() == userModel.getIdx() && res.getName().equals(userModel.getName())
+                && res.getPw().equals(userModel.getPw())) {
+            userRepo.save(userModel);
             return true;
         } else {
             return false;
         }
     }
 
-    @Override
-    public boolean delete(UserModel userDTO) {
-        UserModel res = userRepo.findById(userDTO.getIdx()).orElse(null);
-        if (res.getIdx() == userDTO.getIdx() && res.getPw().equals(userDTO.getPw())) {
-            userRepo.deleteById(userDTO.getIdx());
+    public boolean delete(UserModel userModel) {
+        UserModel res = userRepo.findById(userModel.getIdx()).orElse(null);
+        if (res.getIdx() == userModel.getIdx() && res.getPw().equals(userModel.getPw())) {
+            userRepo.deleteById(userModel.getIdx());
             return true;
         } else {
             return false;

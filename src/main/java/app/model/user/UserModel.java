@@ -16,7 +16,7 @@ public class UserModel {
     @Column
     private int idx; // 기본키
     @Column
-    private String id;
+    private String user_id;
     @Column
     private String pw;
     @Column
@@ -30,12 +30,12 @@ public class UserModel {
         this.idx = idx;
     }
 
-    public String getId() {
-        return id;
+    public String getUser_id() {
+        return user_id;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setId(String user_id) {
+        this.user_id = user_id;
     }
 
     public String getPw() {

@@ -4,7 +4,7 @@ GET http://localhost:63002/bbseconomy/read/146
 
 ### PAGE
 
-GET http://dev-b.zcvfcat.ga/bbs/list/1
+GET http://dev-b.zcvfcat.ga/bbs/1
 
 ### INSERT
 POST http://dev-b.zcvfcat.ga/bbs HTTP/1.1
@@ -45,6 +45,10 @@ User-Agent: rest-client
 ### bbs
 GET http://localhost:63002/bbseconomy/read/146
 
+### bbs list
+GET http://localhost:63002/bbs/1
+
+
 ###create
 POST http://localhost:63002/bbseconomy/ HTTP/1.1
 content-type: application/json
@@ -68,3 +72,19 @@ User-Agent: rest-client
     "name" : "2",
     "pw" : "2"
 }
+
+###login
+POST http://localhost:63002/user/login HTTP/1.1
+content-type: application/json
+User-Agent: rest-client
+
+{
+    "user_id" : "qwer",
+    "pw" : "1234"
+}
+
+###comment list
+GET http://localhost:63002/comment/1/3 HTTP/1.1
+
+### comment maxpage
+GET http://localhost:63002/comment/max/761 HTTP/1.1
