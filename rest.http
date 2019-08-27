@@ -1,0 +1,90 @@
+### bbs
+
+GET http://localhost:63002/bbseconomy/read/146
+
+### PAGE
+
+GET http://dev-b.zcvfcat.ga/bbs/1
+
+### INSERT
+POST http://dev-b.zcvfcat.ga/bbs HTTP/1.1
+content-type: application/json
+User-Agent: rest-client
+
+{
+    "name" : "1",
+    "pw" : "1",
+    "title" : "1",
+    "content" : "1"
+}
+
+### UPDATE
+PUT  http://dev-b.zcvfcat.ga/bbs/79 HTTP/2.0
+content-type: application/json
+User-Agent: rest-client
+
+{
+    "idx" : "80",
+    "name" : "1",
+    "pw" : "1",
+    "title" : "40",
+    "content" : "40"
+}
+
+### DELETE
+DELETE  http://dev-b.zcvfcat.ga/bbs/80 HTTP/2.0
+content-type: application/json
+User-Agent: rest-client
+
+{
+    "idx" : "80",
+    "name" : "1",
+    "pw" : "1"
+}
+
+### bbs
+GET http://localhost:63002/bbseconomy/read/146
+
+### bbs list
+GET http://localhost:63002/bbs/1
+
+
+###create
+POST http://localhost:63002/bbseconomy/ HTTP/1.1
+content-type: application/json
+User-Agent: rest-client
+
+{
+    "name" : "7",
+    "pw" : "7",
+    "title" : "7",
+    "content" : "7",
+    "category" : "economy"
+}
+
+### DELETE
+DELETE  http://localhost:63002/bbsentertain/147 HTTP/2.0
+content-type: application/json
+User-Agent: rest-client
+
+{
+    "idx" : "147",
+    "name" : "2",
+    "pw" : "2"
+}
+
+###login
+POST http://localhost:63002/user/login HTTP/1.1
+content-type: application/json
+User-Agent: rest-client
+
+{
+    "user_id" : "qwer",
+    "pw" : "1234"
+}
+
+###comment list
+GET http://localhost:63002/comment/1/1 HTTP/1.1
+
+### comment maxpage
+GET http://localhost:63002/comment/max/761 HTTP/1.1
