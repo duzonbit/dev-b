@@ -24,54 +24,44 @@ import app.service.impl.UserServiceimpl;
 public class UserController {
 
     @Autowired
-    UserServiceimpl us;
+    UserServiceimpl userServiceimpl;
 
-    @Autowired
-    UserRepo ur;
-
-    //! 회원가입
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public Map<String, String> insert(@RequestBody UserModel userModel) {
         Map<String, String> map = new HashMap<String, String>();
-        us.create(userModel);
+        userServiceimpl.create(userModel);
         map.put("message", "success");
         return map;
     }
 
-    //! 로그인
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public Map<String, String> login(@RequestBody UserModel userModel) {
-        System.out.println("11111111111111111111111" + userModel);
         Map<String, String> map = new HashMap<String, String>();
-        String msg = us.login(userModel.getUser_id(), userModel.getPw()) ? "success" : "fail";
+        String msg = userServiceimpl.login(userModel.getUser_id(), userModel.getPw()) ? "success" : "fail";
         map.put("message", msg);
         return map;
     }
 
-    //! 아이디 중복체크
     @RequestMapping(value = "/check/{id}", method = RequestMethod.POST)
     public Map<String, String> loginCheck(@PathVariable String id) {
-        System.out.println(id);
         Map<String, String> map = new HashMap<String, String>();
-        String msg = us.loginCheck(id) ? "success" : "fail";
+        String msg = userServiceimpl.loginCheck(id) ? "success" : "fail";
         map.put("message", msg);
         return map;
     }
 
-    //! 회원 수정
     @RequestMapping(value = "/", method = RequestMethod.PUT)
     public Map<String, String> update(@RequestBody UserModel userModel) {
         Map<String, String> map = new HashMap<String, String>();
-        String msg = us.update(userModel) ? "success" : "fail";
+        String msg = userServiceimpl.update(userModel) ? "success" : "fail";
         map.put("message", msg);
         return map;
     }
     
-    //! 회원 삭제
     @RequestMapping(value = { "/" }, method = RequestMethod.DELETE)
     public Map<String, String> delete(@RequestBody UserModel userModel) {
         Map<String, String> map = new HashMap<String, String>();
-        String msg = us.delete(userModel) ? "success" : "fail";
+        String msg = userServiceimpl.delete(userModel) ? "success" : "fail";
         map.put("message", msg);
         return map;
     }

@@ -7,12 +7,13 @@ import org.springframework.stereotype.Service;
 
 import app.model.bbs.BbsModel;
 import app.repository.bbs.BbsRepo;
+import app.service.BbsService;
 
 /**
  * BbsServiceimpl
  */
 @Service
-public class BbsServiceimpl {
+public class BbsServiceimpl implements BbsService{
 
     @Autowired
     BbsRepo bRepo;

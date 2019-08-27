@@ -1,6 +1,5 @@
 package app.controller.bbs;
 
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -22,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import app.model.bbs.BbsModel;
 import app.repository.bbs.BbsRepo;
 import app.service.impl.BbsServiceimpl;
+
 /**
  * bbsController
  */
@@ -30,47 +30,45 @@ import app.service.impl.BbsServiceimpl;
 @RequestMapping(value = "/bbs")
 public class bbsController {
 
-   @Autowired
-    BbsServiceimpl bs;
+    @Autowired
+    BbsServiceimpl bbsServiceimpl;
 
     @Autowired
-    BbsRepo br;
+    BbsRepo bbsRepo;
 
     @GetMapping(value = { "", "/", "/{index}" })
-    public Page<BbsModel> list(@PathVariable Optional<Integer> index) {  // URL에 index가 안들어와도 인식하게하는것
+    public Page<BbsModel> list(@PathVariable Optional<Integer> index) { // URL에 index가 안들어와도 인식하게하는것
         Pageable pageable = PageRequest.of(index.orElse(1) - 1, 10, new Sort(Direction.DESC, "idx"));
-        Page<BbsModel> page = br.findAll(pageable);
+        Page<BbsModel> page = bbsRepo.findAll(pageable);
         return page;
     }
 
     @GetMapping(value = { "/read/{index}" })
     public BbsModel read(@PathVariable int index) {
-        BbsModel bm = bs.read(index);
-        return bm;
+        BbsModel bbsModel = bbsServiceimpl.read(index);
+        return bbsModel;
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public Map<String, String> insert(@RequestBody BbsModel bm) {
+    public Map<String, String> insert(@RequestBody BbsModel bbsModel) {
         Map<String, String> map = new HashMap<String, String>();
-        bs.create(bm);
+        bbsServiceimpl.create(bbsModel);
         map.put("message", "success");
         return map;
     }
 
     @RequestMapping(value = "/", method = RequestMethod.PUT)
-    public Map<String, String> update(@RequestBody BbsModel bm) {
+    public Map<String, String> update(@RequestBody BbsModel bbsModel) {
         Map<String, String> map = new HashMap<String, String>();
-        String ms = bs.update(bm) ? "success" : "fail";
+        String ms = bbsServiceimpl.update(bbsModel) ? "success" : "fail";
         map.put("message", ms);
         return map;
     }
 
     @RequestMapping(value = { "/" }, method = RequestMethod.DELETE)
-    public Map<String, String> delete(@RequestBody BbsModel bm) {
-        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-        System.out.println(bm);
+    public Map<String, String> delete(@RequestBody BbsModel bbsModel) {
         Map<String, String> map = new HashMap<String, String>();
-        String ms = bs.delete(bm) ? "success" : "fail";
+        String ms = bbsServiceimpl.delete(bbsModel) ? "success" : "fail";
         map.put("message", ms);
         return map;
     }

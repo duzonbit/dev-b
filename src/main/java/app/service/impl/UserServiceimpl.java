@@ -19,7 +19,7 @@ public class UserServiceimpl implements UserService {
         userRepo.saveAndFlush(userModel);
     }
 
-    public boolean login(String id, String pw) {  //! 로그인---------
+    public boolean login(String id, String pw) {
         UserModel userModel = userRepo.findByUserId(id);
         if(userModel == null) {
             return false;
@@ -30,7 +30,7 @@ public class UserServiceimpl implements UserService {
         return true;
     }
 
-    public boolean loginCheck(String id) {  //! 아이디 중복 체크---------
+    public boolean loginCheck(String id) {
         UserModel userModel = userRepo.findByUserId(id);
         System.out.println(userModel);
         if (userModel == null) {
