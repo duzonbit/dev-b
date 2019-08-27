@@ -84,7 +84,7 @@ User-Agent: rest-client
 }
 
 ###comment list
-GET http://localhost:63002/comment/1/3 HTTP/1.1
+GET http://localhost:63002/comment/1/1 HTTP/1.1
 
 ### comment maxpage
 GET http://localhost:63002/comment/max/761 HTTP/1.1
